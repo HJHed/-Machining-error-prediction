@@ -41,7 +41,7 @@ from tensorflow.keras.layers import (
     Reshape,
     Softmax,
 )
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, TensorBoard
 from tensorflow.keras import regularizers
 
 # =========================================================
@@ -78,6 +78,13 @@ def env_float_list(name: str, default: List[float]) -> List[float]:
     if value is None or value.strip() == "":
         return default
     return [float(part.strip()) for part in value.split(",") if part.strip()]
+
+
+def env_str_list(name: str, default: List[str]) -> List[str]:
+    value = os.environ.get(name)
+    if value is None or value.strip() == "":
+        return default
+    return [part.strip() for part in value.split(",") if part.strip()]
 
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -135,10 +142,12 @@ AXIS_FINE_THRESHOLD_LOSS_WEIGHT = env_float("TEE_AXIS_FINE_THRESHOLD_LOSS_WEIGHT
 DISTANCE_PRIMARY_AXIS_LOSS_WEIGHT = env_float("TEE_DISTANCE_PRIMARY_AXIS_LOSS_WEIGHT", 0.15)
 DISTANCE_MARGIN_SHARPNESS = env_float("TEE_DISTANCE_MARGIN_SHARPNESS", 80.0)
 REGRESSION_LOSS_MODE = env_str("TEE_REGRESSION_LOSS_MODE", "axis_aware")
-Y_AXIS_LOSS_WEIGHT = 1.0
-Y_AXIS_THRESHOLD_LOSS_WEIGHT = 0.0
+Y_AXIS_LOSS_WEIGHT = env_float("TEE_Y_AXIS_LOSS_WEIGHT", 1.0)
+Y_AXIS_THRESHOLD_LOSS_WEIGHT = env_float("TEE_Y_AXIS_THRESHOLD_LOSS_WEIGHT", 0.0)
 HIGH_VALUE_TOP_CLASSES = 3
 HIGH_VALUE_REG_LOSS_WEIGHT = 0.3
+Z_EXTREME_ABS_THRESHOLD = env_float("TEE_Z_EXTREME_ABS_THRESHOLD", 0.10)
+Z_EXTREME_REG_WEIGHT = env_float("TEE_Z_EXTREME_WEIGHT", 1.0)
 USE_RESIDUAL_CORRECTION = env_bool("TEE_USE_RESIDUAL_CORRECTION", False)
 RESIDUAL_MAX_ABS_CORRECTION = env_float("TEE_RESIDUAL_MAX_ABS_CORRECTION", 0.04)
 RESIDUAL_SCALE_CANDIDATES = env_float_list("TEE_RESIDUAL_SCALE_CANDIDATES", [0.0])
@@ -215,6 +224,11 @@ USE_Y_AXIS_TARGETED_FEATURES = False
 USE_SOURCE_ONEHOT_FEATURES = env_bool("TEE_USE_SOURCE_ONEHOT_FEATURES", False)
 USE_PHYSICAL_CONDITION_STATIC_FEATURES = env_bool("TEE_USE_PHYSICAL_CONDITION_STATIC_FEATURES", True)
 TEMPORAL_BACKBONE = env_str("TEE_TEMPORAL_BACKBONE", "gru_attention")
+SEQUENCE_GROUP_COLS = env_str_list("TEE_SEQUENCE_GROUP_COLS", ["source_file_name", "mapped_file_index"])
+USE_VIBRATION_FEATURES = env_bool("TEE_USE_VIB_FEATURES", True)
+ENABLE_TENSORBOARD = env_bool("TEE_ENABLE_TENSORBOARD", True)
+TENSORBOARD_LOG_DIR = env_str("TEE_TENSORBOARD_LOG_DIR", "")
+TENSORBOARD_UPDATE_FREQ = env_str("TEE_TENSORBOARD_UPDATE_FREQ", "epoch")
 SHOW_PLOTS = False       # True: 运行时弹图；False: 只保存图
 VERBOSE = 2              # 2 每个 epoch 一行；1 进度条
 
@@ -396,7 +410,7 @@ def apply_cli_args() -> None:
     global JSON_DIR, JSON_PATH, OUTPUT_DIR, PREDICT_SOURCE_INDEX, PREDICT_SOURCE_NAME
     global RUN_MODE, HYBRID_MODEL_FILE, HYBRID_ARTIFACT_FILE
     global HYBRID_MODEL_PATH, HYBRID_ARTIFACT_PATH
-    global OPEN_PLOTS_AFTER_RUN
+    global OPEN_PLOTS_AFTER_RUN, ENABLE_TENSORBOARD, TENSORBOARD_LOG_DIR
 
     parser = argparse.ArgumentParser(
         description="Train or run single-model prediction for thermal expansion error."
@@ -412,6 +426,8 @@ def apply_cli_args() -> None:
     parser.add_argument("--predict-source-name", help="Exact source JSON filename to predict, for example 模型10.json.")
     parser.add_argument("--open-plots", action="store_true", help="Open prediction plots after saving them.")
     parser.add_argument("--no-open-plots", action="store_true", help="Do not open prediction plots after saving them.")
+    parser.add_argument("--tensorboard-log-dir", help="Directory for live TensorBoard training logs.")
+    parser.add_argument("--no-tensorboard", action="store_true", help="Disable TensorBoard training logs.")
     args = parser.parse_args()
 
     if args.data_dir:
@@ -439,6 +455,11 @@ def apply_cli_args() -> None:
         OPEN_PLOTS_AFTER_RUN = True
     if args.no_open_plots:
         OPEN_PLOTS_AFTER_RUN = False
+    if args.tensorboard_log_dir:
+        TENSORBOARD_LOG_DIR = args.tensorboard_log_dir
+        ENABLE_TENSORBOARD = True
+    if args.no_tensorboard:
+        ENABLE_TENSORBOARD = False
 
     # Do not overwrite the bundled best-model artifact when a new training run
     # is launched without explicit output filenames.
@@ -605,6 +626,40 @@ def load_keras_model_compatible(model_path: str, custom_objects: dict = None, co
 
 def ensure_dir(path: str) -> None:
     os.makedirs(path, exist_ok=True)
+
+
+def is_ascii_path(path: str) -> bool:
+    try:
+        os.path.abspath(path).encode("ascii")
+        return True
+    except UnicodeEncodeError:
+        return False
+
+
+def default_tensorboard_base_dir() -> str:
+    return os.path.join(tempfile.gettempdir(), "tee_tensorboard", safe_path_name(OUTPUT_DIR))
+
+
+def build_tensorboard_callback(stage_name: str) -> Optional[TensorBoard]:
+    if not ENABLE_TENSORBOARD:
+        return None
+    base_log_dir = TENSORBOARD_LOG_DIR or default_tensorboard_base_dir()
+    if not is_ascii_path(base_log_dir):
+        fallback_dir = default_tensorboard_base_dir()
+        print(
+            f"TensorBoard log dir contains non-ASCII characters, using fallback: "
+            f"{os.path.abspath(fallback_dir)}"
+        )
+        base_log_dir = fallback_dir
+    log_dir = os.path.abspath(os.path.join(base_log_dir, safe_path_name(stage_name)))
+    ensure_dir(log_dir)
+    print(f"TensorBoard log dir ({stage_name}): {log_dir}")
+    return TensorBoard(
+        log_dir=log_dir,
+        histogram_freq=0,
+        write_graph=True,
+        update_freq=TENSORBOARD_UPDATE_FREQ,
+    )
 
 
 def safe_path_name(value) -> str:
@@ -1386,6 +1441,28 @@ def build_high_value_regression_weights(class_labels: np.ndarray) -> np.ndarray:
     return weights
 
 
+def apply_z_extreme_regression_weights(
+    weights: np.ndarray,
+    y_scaled: np.ndarray,
+    target_scaler: StandardScaler,
+    name: str,
+) -> np.ndarray:
+    factor = float(Z_EXTREME_REG_WEIGHT)
+    if factor <= 1.0:
+        return weights
+
+    y_raw = target_scaler.inverse_transform(np.asarray(y_scaled, dtype=np.float32))
+    z_mask = np.abs(y_raw[:, 2]) >= Z_EXTREME_ABS_THRESHOLD
+    out = weights.copy()
+    out[z_mask, 2] *= factor
+    print(
+        f"{name} Z-extreme regression weights: "
+        f"abs_z>={Z_EXTREME_ABS_THRESHOLD:.3f}={int(z_mask.sum())}/{len(z_mask)}, "
+        f"factor={factor:.3f}, z_weight_max={float(np.max(out[:, 2])):.3f}"
+    )
+    return out.astype(np.float32)
+
+
 def print_high_value_weight_summary(class_labels: np.ndarray, weights: np.ndarray, name: str) -> None:
     high_class_start = max(ERROR_CLASS_COUNT - HIGH_VALUE_TOP_CLASSES, 0)
     high_mask = class_labels >= high_class_start
@@ -1984,6 +2061,21 @@ def build_hybrid_samples(
         np.asarray(class_parts, dtype=np.int32) if class_cols is not None else np.empty((0, 0), dtype=np.int32),
         pd.DataFrame(meta_parts),
     )
+
+
+def resolve_sequence_group_cols(frame_df: pd.DataFrame) -> List[str]:
+    group_cols = [
+        col for col in unique_preserve_order(SEQUENCE_GROUP_COLS)
+        if col in frame_df.columns
+    ]
+    if not group_cols:
+        raise ValueError(
+            f"No valid sequence grouping columns found from TEE_SEQUENCE_GROUP_COLS={SEQUENCE_GROUP_COLS!r}."
+        )
+    missing = [col for col in SEQUENCE_GROUP_COLS if col not in frame_df.columns]
+    if missing:
+        print(f"Sequence grouping ignored missing columns: {missing}")
+    return group_cols
 
 
 def select_points_by_frames(point_df: pd.DataFrame, frame_df: pd.DataFrame) -> pd.DataFrame:
@@ -2687,10 +2779,11 @@ def load_dataset(json_path: str, file_index_offset: int = 0) -> pd.DataFrame:
             row[f"temp_ch{ch}_median_c"] = to_float_or_zero(ai.get(f"temperature.ch{ch}.median_c", 0.0))
             row[f"temp_ch{ch}_std_c"] = to_float_or_zero(ai.get(f"temperature.ch{ch}.std_c", 0.0))
 
-        for vib_ch in [0, 1, 2]:
-            for feat in USE_VIB_FEATURES:
-                key = f"vibration.ch{vib_ch}.{feat}"
-                row[f"vib_ch{vib_ch}_{feat}"] = to_float_or_zero(ai.get(key, 0.0))
+        if USE_VIBRATION_FEATURES:
+            for vib_ch in [0, 1, 2]:
+                for feat in USE_VIB_FEATURES:
+                    key = f"vibration.ch{vib_ch}.{feat}"
+                    row[f"vib_ch{vib_ch}_{feat}"] = to_float_or_zero(ai.get(key, 0.0))
         rows.append(row)
 
     df = pd.DataFrame(rows)
@@ -3791,6 +3884,8 @@ def build_spatiotemporal_model(
 # 5. Main
 # =========================================================
 def main() -> None:
+    global TEMPORAL_BACKBONE, SEQUENCE_GROUP_COLS
+
     configure_console_output()
     apply_cli_args()
 
@@ -3834,6 +3929,14 @@ def main() -> None:
     print(f"PHASE_SPLIT_BLOCKS = {PHASE_SPLIT_BLOCKS}")
     print(f"RANDOM_CHUNK_SPLIT_COUNT = {RANDOM_CHUNK_SPLIT_COUNT}")
     print(f"RUN_MODE = {run_mode}")
+    print(f"SEQ_DENSE_UNITS = {SEQ_DENSE_UNITS}")
+    print(f"FUSED_DENSE_UNITS = {FUSED_DENSE_UNITS}")
+    print(f"USE_VIBRATION_FEATURES = {USE_VIBRATION_FEATURES}")
+    print(f"SEQUENCE_GROUP_COLS = {SEQUENCE_GROUP_COLS}")
+    print(f"Y_AXIS_LOSS_WEIGHT = {Y_AXIS_LOSS_WEIGHT}")
+    print(f"Y_AXIS_THRESHOLD_LOSS_WEIGHT = {Y_AXIS_THRESHOLD_LOSS_WEIGHT}")
+    print(f"Z_EXTREME_ABS_THRESHOLD = {Z_EXTREME_ABS_THRESHOLD}")
+    print(f"Z_EXTREME_REG_WEIGHT = {Z_EXTREME_REG_WEIGHT}")
     print(f"PREDICT_SOURCE_INDEX = {PREDICT_SOURCE_INDEX}, PREDICT_SOURCE_NAME = {PREDICT_SOURCE_NAME!r}")
     print(f"Hybrid model path = {model_path}")
     print(f"Hybrid artifact path = {artifact_path}")
@@ -3995,16 +4098,21 @@ def main() -> None:
         saved_artifacts = load_pickle_artifact(artifact_path)
         saved_time_steps = int(saved_artifacts.get("time_steps", TIME_STEPS))
         saved_backbone = saved_artifacts.get("temporal_backbone", TEMPORAL_BACKBONE)
+        saved_sequence_group_cols = saved_artifacts.get("sequence_group_cols")
         if saved_time_steps != TIME_STEPS:
             raise ValueError(
                 f"Saved model was trained with TIME_STEPS={saved_time_steps}, "
                 f"but current TIME_STEPS={TIME_STEPS}."
             )
         if saved_backbone != TEMPORAL_BACKBONE:
-            raise ValueError(
-                f"Saved model was trained with TEMPORAL_BACKBONE={saved_backbone!r}, "
-                f"but current TEMPORAL_BACKBONE={TEMPORAL_BACKBONE!r}."
+            print(
+                f"Using saved TEMPORAL_BACKBONE={saved_backbone!r} for predict_only "
+                f"instead of current default {TEMPORAL_BACKBONE!r}."
             )
+            TEMPORAL_BACKBONE = saved_backbone
+        if saved_sequence_group_cols:
+            SEQUENCE_GROUP_COLS = list(saved_sequence_group_cols)
+            print(f"Using saved SEQUENCE_GROUP_COLS={SEQUENCE_GROUP_COLS!r} for predict_only.")
         static_feature_cols = saved_artifacts["static_feature_cols"]
         state_feature_cols = saved_artifacts["state_feature_cols"]
         validate_required_columns(point_df, static_feature_cols, "point_df")
@@ -4088,7 +4196,8 @@ def main() -> None:
     assign_float32_columns(val_points_seq, TARGET_COLS, val_y_s)
     assign_float32_columns(test_points_seq, TARGET_COLS, test_y_s)
 
-    frame_group_cols = ["source_file_name"]
+    frame_group_cols = resolve_sequence_group_cols(train_frame_seq)
+    print(f"Sequence window grouping columns: {frame_group_cols}")
     train_frame_X_seq, train_frame_meta = build_grouped_feature_sequences(
         train_frame_seq, state_feature_cols, frame_group_cols, TIME_STEPS
     )
@@ -4139,6 +4248,8 @@ def main() -> None:
 
     train_reg_weights = build_high_value_regression_weights(train_class_y)
     val_reg_weights = build_high_value_regression_weights(val_class_y)
+    train_reg_weights = apply_z_extreme_regression_weights(train_reg_weights, train_y, target_scaler, "Train")
+    val_reg_weights = apply_z_extreme_regression_weights(val_reg_weights, val_y, target_scaler, "Val")
     train_class_weights = np.ones(train_class_y.shape, dtype=np.float32)
     val_class_weights = np.ones(val_class_y.shape, dtype=np.float32)
     train_sample_weights = make_model_sample_weights(train_reg_weights, train_class_weights, train_distance_y, train_risk_y)
@@ -4180,6 +4291,23 @@ def main() -> None:
                 "error_class_edges": error_class_edges,
                 "time_steps": TIME_STEPS,
                 "temporal_backbone": TEMPORAL_BACKBONE,
+                "sequence_group_cols": frame_group_cols,
+                "use_vib_features": USE_VIBRATION_FEATURES,
+                "seq_dense_units": SEQ_DENSE_UNITS,
+                "fused_dense_units": FUSED_DENSE_UNITS,
+                "split_mode": SPLIT_MODE,
+                "random_seed": RANDOM_SEED,
+                "phase_split_blocks": PHASE_SPLIT_BLOCKS,
+                "val_ratio": VAL_RATIO,
+                "test_ratio": TEST_RATIO,
+                "euclidean_distance_loss_weight": EUCLIDEAN_DISTANCE_LOSS_WEIGHT,
+                "position_threshold_loss_weight": POSITION_THRESHOLD_LOSS_WEIGHT,
+                "axis_fine_threshold_loss_weight": AXIS_FINE_THRESHOLD_LOSS_WEIGHT,
+                "distance_primary_axis_loss_weight": DISTANCE_PRIMARY_AXIS_LOSS_WEIGHT,
+                "y_axis_loss_weight": Y_AXIS_LOSS_WEIGHT,
+                "y_axis_threshold_loss_weight": Y_AXIS_THRESHOLD_LOSS_WEIGHT,
+                "z_extreme_abs_threshold": Z_EXTREME_ABS_THRESHOLD,
+                "z_extreme_reg_weight": Z_EXTREME_REG_WEIGHT,
                 "feature_set_mode": FEATURE_SET_MODE,
                 "thermal_accumulation_mode": THERMAL_ACCUMULATION_MODE,
             },
@@ -4214,6 +4342,10 @@ def main() -> None:
             val_meta_df=val_diag_df,
             target_scaler=target_scaler,
         )
+        train_callbacks = [reduce_lr, es, position_ratio_cb]
+        tensorboard_cb = build_tensorboard_callback("fit")
+        if tensorboard_cb is not None:
+            train_callbacks.append(tensorboard_cb)
         hist = model.fit(
             make_model_inputs(train_static_X, train_seq_X, train_condition_X),
             make_model_targets(train_y, train_class_y, train_distance_y, train_risk_y),
@@ -4226,7 +4358,7 @@ def main() -> None:
             epochs=EPOCHS,
             batch_size=BATCH_SIZE,
             verbose=VERBOSE,
-            callbacks=[reduce_lr, es, position_ratio_cb],
+            callbacks=train_callbacks,
         )
         best_epoch = int(np.argmin(hist.history["val_loss"])) + 1
         best_val_loss = float(np.min(hist.history["val_loss"]))
@@ -4297,6 +4429,10 @@ def main() -> None:
                 val_meta_df=val_diag_df,
                 target_scaler=target_scaler,
             )
+            fine_callbacks = [fine_reduce_lr, fine_es, fine_position_ratio_cb]
+            fine_tensorboard_cb = build_tensorboard_callback("fine_tune")
+            if fine_tensorboard_cb is not None:
+                fine_callbacks.append(fine_tensorboard_cb)
             fine_hist = model.fit(
                 make_model_inputs(train_static_X, train_seq_X, train_condition_X),
                 make_model_targets(train_y, train_class_y, train_distance_y, train_risk_y),
@@ -4309,7 +4445,7 @@ def main() -> None:
                 epochs=NEAR_THRESHOLD_FINE_TUNE_EPOCHS,
                 batch_size=BATCH_SIZE,
                 verbose=VERBOSE,
-                callbacks=[fine_reduce_lr, fine_es, fine_position_ratio_cb],
+                callbacks=fine_callbacks,
             )
             fine_best_epoch = int(np.argmin(fine_hist.history["val_loss"])) + 1
             fine_best_val_loss = float(np.min(fine_hist.history["val_loss"]))

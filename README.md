@@ -19,7 +19,7 @@
 
 Hybrid v10 模型说明见 [models/hybrid_v10/MODEL_CARD.md](models/hybrid_v10/MODEL_CARD.md)。最新部署快照的逐点预测、失败样本诊断和三轴图像位于 [results/hybrid_v10/model10_2026-07-23](results/hybrid_v10/model10_2026-07-23)。
 
-81.16% 实验的架构、训练/评估命令、模型文件与逐点结果见 [results/exp1_gru_highfreq_300/README.md](results/exp1_gru_highfreq_300/README.md)。仓库已提交的 `lstm_keras/main.py` 与该模型的 GRU-Attention 层结构相符；尚未提交的后续架构实验不能视作这个模型的训练代码。
+81.16% 实验的架构、训练/评估命令、模型文件与逐点结果见 [results/exp1_gru_highfreq_300/README.md](results/exp1_gru_highfreq_300/README.md)。`lstm_keras/main.py` 和 [lstm_keras/exp1_gru_highfreq_300.py](lstm_keras/exp1_gru_highfreq_300.py) 对应已从头重训并验证的 Exp1 源码；后续架构实验不属于这组结果。
 
 ## 项目结构
 
