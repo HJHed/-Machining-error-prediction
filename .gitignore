@@ -15,6 +15,17 @@ Thumbs.db
 results/*
 !results/hybrid_v10/
 !results/hybrid_v10/**
+!results/exp1_gru_highfreq_300/
+results/exp1_gru_highfreq_300/*
+!results/exp1_gru_highfreq_300/README.md
+!results/exp1_gru_highfreq_300/hybrid_spatiotemporal_model.keras
+!results/exp1_gru_highfreq_300/hybrid_spatiotemporal_artifacts.pkl
+!results/exp1_gru_highfreq_300/hybrid_spatiotemporal_loss_v10.png
+!results/exp1_gru_highfreq_300/test_hybrid_x_v10.png
+!results/exp1_gru_highfreq_300/test_hybrid_y_v10.png
+!results/exp1_gru_highfreq_300/test_hybrid_z_v10.png
+!results/exp1_gru_highfreq_300/tool_error_test_predictions_v10_hybrid_spatiotemporal.csv
+!results/exp1_gru_highfreq_300/tool_error_test_source_diagnostic_summary_v10.csv
 lstm_keras/__pycache__/
 lstm_keras/tempCodeRunnerFile.py
 lstm_keras/main_before_*.py
