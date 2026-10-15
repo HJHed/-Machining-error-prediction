@@ -15,11 +15,14 @@
 | Hybrid v10，扩展数据集最优已记录调参（trial 612） | 1,288 个测试点，三维实际位置欧氏误差 `< 0.04` | **80.67%**（1,039/1,288）；平均/中位/最大距离为 0.031020 / 0.018602 / 0.374633 |
 | Hybrid v10，最新部署快照（2026-07-23） | `模型10.json` 的 76 个测试点，同一 0.04 阈值 | **88.16%**（67/76）；平均距离 0.023261 |
 | GRU-Attention 实验 `exp1_gru_highfreq_300` | 17 个 JSON，1,279 个测试点，三维位置距离 `< 0.04` | **81.16%**（1,038/1,279）；X/Y/Z 单轴分别为 92.10% / 90.15% / 95.47% |
+| NC 融合 + 物理风险预处理 v1 | 同一 17 个 JSON、同一 1,279 个测试点，三维位置距离 `< 0.04` | **81.70%**（1,045/1,279）；物理高风险 45/1,279 |
 | 2023 LSTM #95 | 温度→一维热伸长预测 | 训练 RMSE 0.126，测试 RMSE 0.127 |
 
 Hybrid v10 模型说明见 [models/hybrid_v10/MODEL_CARD.md](models/hybrid_v10/MODEL_CARD.md)。最新部署快照的逐点预测、失败样本诊断和三轴图像位于 [results/hybrid_v10/model10_2026-07-23](results/hybrid_v10/model10_2026-07-23)。
 
 81.16% 实验的架构、训练/评估命令、模型文件与逐点结果见 [results/exp1_gru_highfreq_300/README.md](results/exp1_gru_highfreq_300/README.md)。`lstm_keras/main.py` 和 [lstm_keras/exp1_gru_highfreq_300.py](lstm_keras/exp1_gru_highfreq_300.py) 对应已从头重训并验证的 Exp1 源码；后续架构实验不属于这组结果。
+
+81.70% 版本的完整训练代码、架构图、训练参数、保存模型与逐点结果见 [lstm_nc_risk/README.md](lstm_nc_risk/README.md)。原始 NC 程序尚未入库，完整重训需按说明提供程序映射；同一测试集曾被多次查看，本次对照属于探索性评估。
 
 ## 项目结构
 

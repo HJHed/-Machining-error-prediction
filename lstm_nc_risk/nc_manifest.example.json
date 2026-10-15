@@ -1,0 +1,19 @@
+{
+  "模型1.json": "C:/path/to/0098.nc",
+  "模型2.json": "C:/path/to/0100.nc",
+  "模型3.json": "C:/path/to/0125.nc",
+  "模型4.json": "C:/path/to/jiagong1630.nc",
+  "模型5.json": {"0": "C:/path/to/1789.nc"},
+  "模型6.json": {"0": "C:/path/to/1738.nc"},
+  "模型7.json": {"0": "C:/path/to/1951.nc"},
+  "模型8.json": "C:/path/to/2000加工.nc",
+  "模型9.json": {"0": "C:/path/to/1402.nc"},
+  "模型10.json": {"0": "C:/path/to/1790.nc"},
+  "模型11.json": {"0": "C:/path/to/1753.nc"},
+  "模型12.json": {"0": "C:/path/to/1765.nc"},
+  "模型13.json": {"0": "C:/path/to/1787.nc"},
+  "模型14.json": {"0": "C:/path/to/1821.nc"},
+  "模型15.json": {"0": "C:/path/to/1889.nc"},
+  "模型16.json": {"0": "C:/path/to/1892.nc", "1": "C:/path/to/1892-2.nc"},
+  "模型17.json": "C:/path/to/jiagong0002.nc"
+}

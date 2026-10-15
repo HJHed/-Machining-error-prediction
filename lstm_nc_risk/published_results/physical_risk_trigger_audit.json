@@ -1,0 +1,13 @@
+{
+  "test_points": 1279,
+  "high_risk": 45,
+  "trigger_counts_overlapping": {
+    "acceleration_above_99pct": 9,
+    "pose_jump_above_99pct": 11,
+    "acceleration_above_95pct_with_jump_or_nc_corner": 26,
+    "acceleration_above_90pct_and_jump_above_95pct": 12,
+    "acceleration_above_90pct_and_nc_next_segment_above_95pct": 2
+  },
+  "high_risk_requiring_nc_condition": 7,
+  "explanation": "Trigger counts overlap. NC is also present in the error-network input for every point."
+}

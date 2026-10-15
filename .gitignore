@@ -33,6 +33,7 @@ lstm_keras/documentations/
 lstm_keras/*.h5
 lstm_keras/*.keras
 lstm_keras/*.pkl
+lstm_nc_risk/nc_manifest.json
 
 # Keep only the documented legacy LSTM #95 result.
 !lstm_keras/best model/

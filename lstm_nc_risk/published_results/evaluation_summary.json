@@ -1,0 +1,70 @@
+{
+  "risk_definition": "extreme measured acceleration/pose jump, or coincident high motion and NC corner/next-segment change; train-frame 75/90/95/99th percentile thresholds per NC program",
+  "risk_score_kind": "physical-dynamics severity, not model-failure probability",
+  "risk_threshold_selection": "fixed physical rule from training inputs only; no target recall optimization",
+  "data_split": "same 17 JSON, phase_blocks, seed 2031, 10-frame sequence",
+  "previous_nc_model": {
+    "total": 1279,
+    "pass": 1038,
+    "fail": 241,
+    "accuracy_pct": 81.15715402658327,
+    "mean_mm": 0.02895351367091478,
+    "p95_mm": 0.08431669399999997
+  },
+  "fresh_model": {
+    "total": 1279,
+    "pass": 1045,
+    "fail": 234,
+    "accuracy_pct": 81.70445660672401,
+    "mean_mm": 0.02875863472494136,
+    "p95_mm": 0.09461164599999998
+  },
+  "train_high_risk": 297,
+  "train_points": 6863,
+  "validation_high_risk": 41,
+  "validation_points": 1279,
+  "test_high_risk": 45,
+  "test_points": 1279,
+  "raw_high_risk": 414,
+  "raw_points": 9908,
+  "risk_against_previous_failures": {
+    "failures": 241,
+    "correct": 1038,
+    "failure_flagged": 15,
+    "failure_missed": 226,
+    "correct_flagged": 30,
+    "correct_unflagged": 1008,
+    "failure_recall_pct": 6.224066390041494,
+    "correct_false_alert_pct": 2.8901734104046244,
+    "alert_precision_pct": 33.33333333333333
+  },
+  "risk_against_fresh_failures": {
+    "failures": 234,
+    "correct": 1045,
+    "failure_flagged": 13,
+    "failure_missed": 221,
+    "correct_flagged": 32,
+    "correct_unflagged": 1013,
+    "failure_recall_pct": 5.555555555555555,
+    "correct_false_alert_pct": 3.062200956937799,
+    "alert_precision_pct": 28.888888888888886
+  },
+  "previous_failed_now_correct": 57,
+  "previous_correct_now_failed": 50,
+  "best_validation_epoch": 216,
+  "best_validation_accuracy_pct": 86.23924941360438,
+  "test_reuse_note": "This same test set was viewed during prior project iterations; the comparison is exploratory.",
+  "physical_trigger_audit": {
+    "test_points": 1279,
+    "high_risk": 45,
+    "trigger_counts_overlapping": {
+      "acceleration_above_99pct": 9,
+      "pose_jump_above_99pct": 11,
+      "acceleration_above_95pct_with_jump_or_nc_corner": 26,
+      "acceleration_above_90pct_and_jump_above_95pct": 12,
+      "acceleration_above_90pct_and_nc_next_segment_above_95pct": 2
+    },
+    "high_risk_requiring_nc_condition": 7,
+    "explanation": "Trigger counts overlap. NC is also present in the error-network input for every point."
+  }
+}
