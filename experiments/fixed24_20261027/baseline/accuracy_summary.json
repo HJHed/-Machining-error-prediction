@@ -1,0 +1,14 @@
+{
+  "test_points": 1978,
+  "correct": 1800,
+  "accuracy_pct": 91.0010111223458,
+  "train_points": 10372,
+  "val_points": 1976,
+  "common_19_test_points": 1460,
+  "common_old_correct": 1346,
+  "common_new_correct": 1334,
+  "added_5_test_points": 518,
+  "added_5_correct": 466,
+  "added_5_accuracy_pct": 89.96138996138995,
+  "threshold_mm": 0.04
+}

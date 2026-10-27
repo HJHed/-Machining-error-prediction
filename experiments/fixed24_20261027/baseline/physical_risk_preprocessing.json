@@ -1,0 +1,22 @@
+{
+  "definition": "extreme acceleration/pose jump, or coupled motion and NC path transition",
+  "score_kind": "relative physical-dynamics severity; not failure probability",
+  "training_programs": 24,
+  "training_frame_quantiles": [
+    0.75,
+    0.9,
+    0.95,
+    0.99
+  ],
+  "weight_strength": 0.35,
+  "mild_score_strength": 0.15,
+  "train_high_risk": 440,
+  "train_points": 10372,
+  "validation_high_risk": 60,
+  "validation_points": 1976,
+  "test_high_risk_unlabeled": 76,
+  "test_points": 1978,
+  "training_target_used_for_risk": false,
+  "validation_target_used_for_risk": false,
+  "test_target_used_for_risk": false
+}

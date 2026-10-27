@@ -1,0 +1,407 @@
+{
+  "source_repo_commit": "642243afc7a7cbea3ab2e6120afc320869568a65",
+  "source_experiment": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\results\\image_24_data_only_20261027",
+  "source_experiment_input_manifest_sha256": "9b41b28b89386623807830b7ca3c53522fcf5d37c52f4540cca2d5556b3ee9fc",
+  "workpiece_count": 24,
+  "excluded_from_image": [
+    "1739",
+    "1892"
+  ],
+  "entries": {
+    "1477.json": {
+      "code": "1477",
+      "fusion": "data/fusion/1477.json",
+      "nominal": "data/nominal/1477.txt",
+      "stl": "data/stl/1477.stl",
+      "nc": "data/nc/1477.nc",
+      "point_count": 670,
+      "sha256": {
+        "fusion": "c2da00ac40d42331a561945b9a2d18b63d827315b235bd6e69f922420040f6db",
+        "nominal": "3889506c9f21f62e5d17362a3e87af2dd36876794d8140b3f535ad90569252f2",
+        "stl": "884e8ec88f0a621529e3f35391d2f459d168685eec9a0fb8e0408d59921e1e11"
+      }
+    },
+    "1540.json": {
+      "code": "1540",
+      "fusion": "data/fusion/1540.json",
+      "nominal": "data/nominal/1540.txt",
+      "stl": "data/stl/1540.stl",
+      "nc": {
+        "0": "data/nc/1540_0.nc"
+      },
+      "point_count": 720,
+      "sha256": {
+        "fusion": "1f2d12f8b7ec5b7508f3c000e848b4cd744e146b6f91a7cb3996b174b3021594",
+        "nominal": "901da7504c06d49d1ab4fce1256ea4542a7bb6da3c7f838a3b29ed923d2f655d",
+        "stl": "40cc7d9449e3ce1d9ef3651eb6d23d83e00c42c7dff586dff1cd6ae7d91252a5"
+      }
+    },
+    "1754.json": {
+      "code": "1754",
+      "fusion": "data/fusion/1754.json",
+      "nominal": "data/nominal/1754.txt",
+      "stl": "data/stl/1754.stl",
+      "nc": "data/nc/1754.nc",
+      "point_count": 685,
+      "sha256": {
+        "fusion": "0f8117d541ac9ca38c2ea0f1faf7b51ede485ae087ea5f2323a3509aca51286c",
+        "nominal": "bd57bdc6fe1726e00aa3e4bb1f620c04e0ec9d35201f4a616f9cd5b670855fb3",
+        "stl": "17a9b5020c5aa3964e282e87f85a782c0a9ab69fb4de87614bde3a8a2114c8e1"
+      }
+    },
+    "模型1.json": {
+      "code": "0098",
+      "fusion": "data/fusion/模型1.json",
+      "nominal": "data/nominal/0098.txt",
+      "stl": "data/stl/0098.stl",
+      "nc": "data/nc/0098.nc",
+      "point_count": 483,
+      "sha256": {
+        "fusion": "9ad45f05fc233a64148c1ddb779220ff5cd35f62c1e294543e0af97133389190",
+        "nominal": "24a5726305b01ef337ea3a941c0051754a29045454aa7dfe2996b2b6140489e7",
+        "stl": "84f3eacfffc78e66669fd0d885dd1edf4f55a7950e26526b5dbf00ecad504480"
+      }
+    },
+    "模型10.json": {
+      "code": "1790",
+      "fusion": "data/fusion/模型10.json",
+      "nominal": "data/nominal/1790.txt",
+      "stl": "data/stl/1790.stl",
+      "nc": {
+        "0": "data/nc/1790_0.nc"
+      },
+      "point_count": 590,
+      "sha256": {
+        "fusion": "eeef47ddb32ff5faf5a955ea80964cf4c75bf9caf541c88e3daaf3d6a71d908c",
+        "nominal": "d20878ef73e03893896d513ec57d3f283d9e0e0f92061a59704b19b32a50acca",
+        "stl": "9a873503665bea0ef3217566b4c1bb00ddc01072f318734c8bbe0d2bb15834a8"
+      }
+    },
+    "模型11.json": {
+      "code": "1753",
+      "fusion": "data/fusion/模型11.json",
+      "nominal": "data/nominal/1753.txt",
+      "stl": "data/stl/1753.stl",
+      "nc": {
+        "0": "data/nc/1753_0.nc"
+      },
+      "point_count": 641,
+      "sha256": {
+        "fusion": "125bb3f7e3d7a81d33852491e28edcce3261d6ebb9d0b0a99081101ad83def3c",
+        "nominal": "a70fd686b2ee7921d0e8b2e335dea70c1d0736932910be6550307e60f924c7bc",
+        "stl": "af34505a9d731427a3ddbee97faa2eec0856a067d88cd957018686d0c011e902"
+      }
+    },
+    "模型12.json": {
+      "code": "1765",
+      "fusion": "data/fusion/模型12.json",
+      "nominal": "data/nominal/1765.txt",
+      "stl": "data/stl/1765.stl",
+      "nc": {
+        "0": "data/nc/1765_0.nc"
+      },
+      "point_count": 729,
+      "sha256": {
+        "fusion": "1056c34357ae8dfce1058db697c2098179b0f4a006bd820b35a70e02444d5cc1",
+        "nominal": "8a82d99e35d240e47ef2c72d4e7f861ac3423e8bd9588690ad45265aea4f7dff",
+        "stl": "2e5589e8bc76b32064ecc300d569f6836f5e303bcf9fb1b99718c2ded8f86c47"
+      }
+    },
+    "模型13.json": {
+      "code": "1787",
+      "fusion": "data/fusion/模型13.json",
+      "nominal": "data/nominal/1787.txt",
+      "stl": "data/stl/1787.stl",
+      "nc": {
+        "0": "data/nc/1787_0.nc"
+      },
+      "point_count": 623,
+      "sha256": {
+        "fusion": "d86c249c202086e27b7441d48f8373b94cacd442489ba568f756f16c37699958",
+        "nominal": "4249dd9fda7ed33ad9a082f91fb9f508d50f832b367ff989d19b72a6d5acfc19",
+        "stl": "a95b669c3a9d0ab98cdc024c38700ffcde202d84c1e99315f78c0487f4314909"
+      }
+    },
+    "模型14.json": {
+      "code": "1821",
+      "fusion": "data/fusion/模型14.json",
+      "nominal": "data/nominal/1821.txt",
+      "stl": "data/stl/1821.stl",
+      "nc": {
+        "0": "data/nc/1821_0.nc"
+      },
+      "point_count": 665,
+      "sha256": {
+        "fusion": "3542a5ed16eb3952b2de83ab6a1e296335e4f40b0bea4c14c7c5c62f496dd34c",
+        "nominal": "c16ca9219240df684f9503f31ea848e10603b74b4423d984cc86bfc76b66f52d",
+        "stl": "0c4daca4c248e82e53a66e5a4fa7a7c7b865f258124177a36b13052245e062a5"
+      }
+    },
+    "模型15.json": {
+      "code": "1889",
+      "fusion": "data/fusion/模型15.json",
+      "nominal": "data/nominal/1889.txt",
+      "stl": "data/stl/1889.stl",
+      "nc": {
+        "0": "data/nc/1889_0.nc"
+      },
+      "point_count": 662,
+      "sha256": {
+        "fusion": "9e72fe48761d42280760af2c88b7e7e135b7a55baaaea0d318d064f386efb2a0",
+        "nominal": "4797daf7c4fe818a1e93707fce186298f9e11eb8c7928f6570882de4b81f247c",
+        "stl": "b0e4082fb0ee88263a5ecf2910bb3cce64091d934dd446675ac8ed5e5f8c0bfa"
+      }
+    },
+    "模型17.json": {
+      "code": "0002",
+      "fusion": "data/fusion/模型17.json",
+      "nominal": "data/nominal/0002.txt",
+      "stl": "data/stl/0002.stl",
+      "nc": "data/nc/0002.nc",
+      "point_count": 505,
+      "sha256": {
+        "fusion": "a123c4c83b40e336e6d82aed48c9b62a6b982e8a52ef3f2db8ffd1aef3d58fda",
+        "nominal": "479d66d1bd7841121981a0afb6a28ef5af44f31441bf06ace8b71dcde1d924ab",
+        "stl": "73dba34e0a76b523bad40a9cf8db04da12b84ab8bb1a76d4002fb2a65b6cda2a"
+      }
+    },
+    "模型2.json": {
+      "code": "0100",
+      "fusion": "data/fusion/模型2.json",
+      "nominal": "data/nominal/0100.txt",
+      "stl": "data/stl/0100.stl",
+      "nc": "data/nc/0100.nc",
+      "point_count": 437,
+      "sha256": {
+        "fusion": "961158d6c3446ef3cef38550868e54f8fb64a084d63a6cfa29b9b80a05e32d08",
+        "nominal": "8677b48c8f2f654b5b87dd7880e0752d656ba7452128adc30176c4c2642535ed",
+        "stl": "4118843a8149f7590a0b57ec4f1cf5631a74a821ffdf707d277a84ea4f8aee92"
+      }
+    },
+    "模型3.json": {
+      "code": "0125",
+      "fusion": "data/fusion/模型3.json",
+      "nominal": "data/nominal/0125.txt",
+      "stl": "data/stl/0125.stl",
+      "nc": "data/nc/0125.nc",
+      "point_count": 380,
+      "sha256": {
+        "fusion": "d959f605de894e4833d398f576b51fcdacf398bfb590c327bf7469582f62edb7",
+        "nominal": "11a4baeee127034c3137e22780df689358e0e969014c79e7e8752f4d91677a55",
+        "stl": "d09caca186d5423d2406e7dabce534a95e6053445c9c5baa78bb59c039871d83"
+      }
+    },
+    "模型4.json": {
+      "code": "1630",
+      "fusion": "data/fusion/模型4.json",
+      "nominal": "data/nominal/1630.txt",
+      "stl": "data/stl/1630.stl",
+      "nc": "data/nc/1630.nc",
+      "point_count": 410,
+      "sha256": {
+        "fusion": "5015803d40152455f196838af98c842dd8d988590e59177bfce6deb06432e1dd",
+        "nominal": "0682cb346d6a51bcccdc30f22b0a7ad747661811a6a98b4db58546031a213997",
+        "stl": "b12ce2186e0611aae128c96c914b91e00654e0c83c2f64bc8b92afaf51daccf2"
+      }
+    },
+    "模型5.json": {
+      "code": "1789",
+      "fusion": "data/fusion/模型5.json",
+      "nominal": "data/nominal/1789.txt",
+      "stl": "data/stl/1789.stl",
+      "nc": {
+        "0": "data/nc/1789_0.nc"
+      },
+      "point_count": 723,
+      "sha256": {
+        "fusion": "08ce93090f2fac0fd248658a660b46d892c522e3a003c7eed957341f8964ce4d",
+        "nominal": "655d7cf478a49a2f2e88bf2901e2412114d4cf53706cd4646c65c8b663fd1eb1",
+        "stl": "ce8d9cc94404f7f758b2bb252dbe7f8fea42168f4151a8440572dc95ad33114a"
+      }
+    },
+    "模型6.json": {
+      "code": "1738",
+      "fusion": "data/fusion/模型6.json",
+      "nominal": "data/nominal/1738.txt",
+      "stl": "data/stl/1738.stl",
+      "nc": {
+        "0": "data/nc/1738_0.nc"
+      },
+      "point_count": 587,
+      "sha256": {
+        "fusion": "d1b7e6befa1b299224f3169945ee79d389d88d9107d2020cc4caf44f68451303",
+        "nominal": "bd882478bebab7b346efd46360e57cc316410bd5f92b0749db93660ce740a979",
+        "stl": "2ce78ffd00c5e92015b2764328f0b8a10c82c85ffaf4cde7e30f3feb87eb737d"
+      }
+    },
+    "模型7.json": {
+      "code": "1951",
+      "fusion": "data/fusion/模型7.json",
+      "nominal": "data/nominal/1951.txt",
+      "stl": "data/stl/1951.stl",
+      "nc": {
+        "0": "data/nc/1951_0.nc"
+      },
+      "point_count": 706,
+      "sha256": {
+        "fusion": "d09d80e140a555fe5a476242145348f56855ecf36ed69f701fb7835452eaeb87",
+        "nominal": "9b22bb64384d70c58a67bd61b01b078dffe586f45cd3aeaf6dab25c8b57628a0",
+        "stl": "0b5f60baf9eefbc09529d0489411635eeadf07d8adf408ad69429d2bc086a2c6"
+      }
+    },
+    "模型8.json": {
+      "code": "2000",
+      "fusion": "data/fusion/模型8.json",
+      "nominal": "data/nominal/2000.txt",
+      "stl": "data/stl/2000.stl",
+      "nc": "data/nc/2000.nc",
+      "point_count": 400,
+      "sha256": {
+        "fusion": "ba470f191aa6ecfa64ac6bf4496423135763c588bb3657d09ce9aa26e6c3f0cb",
+        "nominal": "bd2de17001fea25cb4c25aafa816f81ceb8cd1b06584ecd123535d6b7c4a8757",
+        "stl": "bdf37d249c2f50f11cc630182884a4fba4f011c5591f5cf31b8136db415bd1cb"
+      }
+    },
+    "模型9.json": {
+      "code": "1402",
+      "fusion": "data/fusion/模型9.json",
+      "nominal": "data/nominal/1402.txt",
+      "stl": "data/stl/1402.stl",
+      "nc": {
+        "0": "data/nc/1402_0.nc"
+      },
+      "point_count": 560,
+      "sha256": {
+        "fusion": "27da26b2a3bcd6436bd423d9c12b67066869110356c12957a14ab8844c60720d",
+        "nominal": "cab2962e6b950a71375ceab37604de7fea29083e9fc92cd1a53cd153602c6923",
+        "stl": "591c178a813de6c8c557bbd746a1fb5e804714bf4b895cbcdcf6429a7b762f73"
+      }
+    },
+    "0029.json": {
+      "code": "0029",
+      "fusion": "data/fusion/0029.json",
+      "nominal": "data/nominal/0029.txt",
+      "stl": "data/stl/0029.stl",
+      "nc": "data/nc/0029.nc",
+      "point_count": 817,
+      "sha256": {
+        "fusion": "58f4887f4183c13e49b87c0bf7340a2d8717add23f46e69f9f26027a33986ed6",
+        "nominal": "ebe94465c3a665b2984dc15b066fb0905ac1f3408d49fbbb687ea50448fea90c",
+        "stl": "5e729afc3b17cca7e13916f14f20716f71181e345bc3ce887bf632879d92b603"
+      }
+    },
+    "1820.json": {
+      "code": "1820",
+      "fusion": "data/fusion/1820.json",
+      "nominal": "data/nominal/1820.txt",
+      "stl": "data/stl/1820.stl",
+      "nc": "data/nc/1820.nc",
+      "point_count": 831,
+      "sha256": {
+        "fusion": "7b7ddfc002820825f6aebb531616aa212585079a7ec4d197c34c37487248675c",
+        "nominal": "953c897af8689fb04eaa686b7d614eef565e2dcab7f1b1c63fd8f7ae64774b90",
+        "stl": "f4a6e89466866613c2657f01a07a0632e6c23f625124d7a18321160143bbf74b"
+      }
+    },
+    "1409.json": {
+      "code": "1409",
+      "fusion": "data/fusion/1409.json",
+      "nominal": "data/nominal/1409.txt",
+      "stl": "data/stl/1409.stl",
+      "nc": "data/nc/1409.nc",
+      "point_count": 705,
+      "sha256": {
+        "fusion": "d2d484cc9213e7328d4a188e61f896deb7002298f0a3e9b3e7b67ed8d0d9c7f4",
+        "nominal": "4c5e7d07f102ad1145892b2babe6197995a37e6ab4af95a36becf487c330da9b",
+        "stl": "d2ef25c024d4ab8e509282e623bf1480ed0acf5d5fd87c84e9b820fc80e09104"
+      }
+    },
+    "0090.json": {
+      "code": "0090",
+      "fusion": "data/fusion/0090.json",
+      "nominal": "data/nominal/0090.txt",
+      "stl": "data/stl/0090.stl",
+      "nc": "data/nc/0090.nc",
+      "point_count": 705,
+      "sha256": {
+        "fusion": "37bef03622a4d6d18002e0de8bb039b6d444feebd7d12f206c1aa371d85121c7",
+        "nominal": "128d12acc90a07453f739b5d561f429395393f7b1e0cb53344d38fe4d21f97d1",
+        "stl": "d0018c438096c717a0ea7d1f1e7c271067666048722569ba592c1044ec1ff51c"
+      }
+    },
+    "1673.json": {
+      "code": "1673",
+      "fusion": "data/fusion/1673.json",
+      "nominal": "data/nominal/1673.txt",
+      "stl": "data/stl/1673.stl",
+      "nc": "data/nc/1673.nc",
+      "point_count": 742,
+      "sha256": {
+        "fusion": "49421f98bdcf97db52c0bdacadb2f2b86bc2af1915778650ebc133162938eda5",
+        "nominal": "eb726dff29952c4d0e6eae63dc5230559df1e0d8947c17ea1a2612eba1c64d5a",
+        "stl": "8d7bcfaea3cc746337ce0cb598903f64863dfc722e3260e21bc6f8e75ea213bf"
+      }
+    }
+  },
+  "nc_sha256": {
+    "data/nc/1477.nc": "dea2bfdc73802863cacb7a1d285b244bddcc372dea8159f3cf0e2b3307aa623a",
+    "data/nc/1540_0.nc": "3e16151530b00692d2fc393d68395a540c9d2d878062251cec6417895889c062",
+    "data/nc/1754.nc": "2269160ee3e3846ce83b9f12d4a42308fe5c9b77145b25a6d56c507bdfa957d9",
+    "data/nc/0098.nc": "75d2174f682340a6cc938de68c589bc84f5188d47f5310c877f6a06ccf15d25f",
+    "data/nc/1790_0.nc": "9a62a47e168062a1304e9b810cf57cb261954fee6e7e6135e88ca750ab2b6a0e",
+    "data/nc/1753_0.nc": "3f8952f513e87a3edfcab062942a50c7d04f541fc8774752d0dd8200c335e695",
+    "data/nc/1765_0.nc": "86e4c8f3b93b9dba022afa66c13dca3d90d509ced7b63fe012d190b45f24deb4",
+    "data/nc/1787_0.nc": "3bd2f3b56f88227f035b5361ae72ba3d33c4d9ab3dc6f59dc3535eceaf5ba119",
+    "data/nc/1821_0.nc": "df635ebf79e9502f3e3ce76ae6caa789e1183cc072e2125b0638786c39de40b6",
+    "data/nc/1889_0.nc": "190a1aaed55a8fc3c286f425b9788bf76170b1d61affe2fab2f6a6b9f9b57ba7",
+    "data/nc/0002.nc": "fd8cebed04442bdaa80b1b4e12988c0e695a01c918c9744c78e1780b6bd1507b",
+    "data/nc/0100.nc": "46d77d8fdf25b1f7c2632bf34bd7deb628981cc7f74d0ab2557d109bd9f318b2",
+    "data/nc/0125.nc": "490fe2bd46e37928b4f993d2d36581ab9c3e36910c57a6ded2558c8b65daa4a7",
+    "data/nc/1630.nc": "ac51f6def21cbfc42b306fa992afe8e6adf89216607fb86fc4e79bab726314c0",
+    "data/nc/1789_0.nc": "f2807e35e213dc03ffbb0f152ab47f5b272a29398a81edba1f04fca3d9a50c76",
+    "data/nc/1738_0.nc": "42bd9e96eb9708549f73022b8a945d311d76c1b2e266b7092f7e28f02201bab5",
+    "data/nc/1951_0.nc": "13fccd41e11b5f11df8a42151159d2d5205050fdba6f65659791ce862a39186e",
+    "data/nc/2000.nc": "c2327fd5e81b81e6e6887bb86a54f9d87f9c6f5cd41156bfbe1432ae1b3645c6",
+    "data/nc/1402_0.nc": "9cf294c5fb3de980de48bcbb25a06440177002ca4811fde37d3b238ffbf215a1",
+    "data/nc/0029.nc": "bda4508ab7f2487debf0976bde96d1c22eba047dd2cd3471ffc4194cacac1b4c",
+    "data/nc/1820.nc": "f8c96e8d880b1d1be5a5c885c27844461d9e5ab3d7abc97dd8a78c6266d3bb1e",
+    "data/nc/1409.nc": "a87229be8e4a794f26a5db6f4b7b349204d3658bd6c895f45fc829f94d058410",
+    "data/nc/0090.nc": "c501caa859b7a507ce9068ebb010f10326ee38c107819d42ccf874362de04446",
+    "data/nc/1673.nc": "734a5dec4dd1c064800e2553cbb3e5badc44c9be79d3e351734c17a0020fa9eb"
+  },
+  "code_sha256": {
+    "main.py": "6594a346aa73699be5593e390e47bd021f21d3fa1d0db1ce736e9e0c69e8781a",
+    "nc_features.py": "9fc5009ab1dfaaf56e26254bfbc23a8ea66f8731079dbf11254b07531f36bbc1",
+    "region_nc_features.py": "8c6fbd9a129b4602c7df05a17d010777c0caf694b2af57a2582bc417fb3a5ddd",
+    "physical_point_features.py": "fe548089c997b5ade1b02e3f4b4579ea4133573db1286f6163f31a41ba05dc88",
+    "audit_physical_feature_sources.py": "0020627e04301bd87d1f093471c2cd5c3f09e2470185493e3b4c59bbb679e86c",
+    "motion_risk.py": "6f5d2ef7608297ab66949c0426fbf77256d7a9ae8a37216b3b07137d1a20ffef",
+    "physical_risk.py": "b68770c32103a893045d2a5deb48ca0f52cab62770a3f55c725486de45e9f178",
+    "experiment.py": "6cae7be14c563e732bcfdb94bcd23648b0a69c9e69a0dee2a5b019cea379d147",
+    "run_reprocessed_four.py": "a80e25dd043a659851d0a2ab184158f1dbdbb48c329870d603b6dfdf32a908ec"
+  },
+  "measurement_1673_sha256": {
+    "xy1673.txt": "d54132f3759bda7c8f4b9bfae7f1517be2a700442f8fddbca850605df624aa62",
+    "xy1673_d.txt": "ce09faa7fa93ccc82e64d6f88d48eeb9e8864be5f4545ac69641a462424191ab",
+    "xy1673_d_filtered.txt": "eb726dff29952c4d0e6eae63dc5230559df1e0d8947c17ea1a2612eba1c64d5a",
+    "xy1673_deleted_h.txt": "f563260e0996f6ec00352d624d30d0fb5b4a67fef1b1638c6de70eee2ba4d314",
+    "xy1673_gosa.txt": "5a72f1e1afa29da9c8c03cdd2c39776e1fe74947964c4c2a6ca685f7ee177c2b",
+    "xy1673_z_filter.json": "935c40ef697f381cf063f5e5c745a67478bd937950ef9d52f64759bf67dc07b6"
+  },
+  "baseline_accuracy": {
+    "test_points": 1978,
+    "correct": 1800,
+    "accuracy_pct": 91.0010111223458,
+    "train_points": 10372,
+    "val_points": 1976,
+    "common_19_test_points": 1460,
+    "common_old_correct": 1346,
+    "common_new_correct": 1334,
+    "added_5_test_points": 518,
+    "added_5_correct": 466,
+    "added_5_accuracy_pct": 89.96138996138995,
+    "threshold_mm": 0.04
+  },
+  "baseline_model_sha256": "b2304de54e0f889fccc545b9daf91ed78a9ea3f1ea6450eed8ffb9337e63ab27",
+  "baseline_preprocessing_sha256": "674b25fc94f3545e40d8f5ef3ef84c2d1fdbd3aff7a30b8c4897514ed1b8e50d"
+}
