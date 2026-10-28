@@ -1,0 +1,12 @@
+{
+  "feature_set": "geometry",
+  "test_points": 1978,
+  "baseline_correct": 1800,
+  "baseline_accuracy_pct": 91.0010111223458,
+  "ablation_correct": 1816,
+  "ablation_accuracy_pct": 91.80990899898887,
+  "change_percentage_points": 0.8088978766430777,
+  "baseline_failures_fixed": 51,
+  "baseline_successes_regressed": 35,
+  "criterion": "3D residual norm < 0.04 mm"
+}

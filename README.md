@@ -2,7 +2,8 @@
 
 用于预测机床热膨胀导致的三轴位置误差的研究与工程化复现实验。仓库同时保留：
 
-- **Hybrid v10（当前主线）**：结合机床姿态、进给/主轴状态、温度统计特征与时序特征的多输出神经网络；
+- **24 件工件设计几何版（当前研究配置）**：GRU-Attention、原有 NC 融合与物理风险保持不变，新增物理输入只启用设计点/CAD 几何 11 项；
+- **Hybrid v10（保留的原有主线）**：结合机床姿态、进给/主轴状态、温度统计特征与时序特征的多输出神经网络；
 - **2023 LSTM 基线**：基于 16 路温度数据预测一维 `delta L`；
 - MATLAB 与 Minitab 的早期对照实现、原始报告和拟合结果。
 
@@ -12,6 +13,8 @@
 
 | 实验 | 评估口径 | 结果 |
 | --- | --- | --- |
+| 24 件固定数据集，新增设计几何 11 项 | 同一 1,978 个测试点，三轴预测残差范数 `< 0.04 mm` | **91.81%**（1,816/1,978）；相对全 30 项版本 +0.81 个百分点 |
+| 24 件固定数据集，新增物理特征 30 项 | 同一 1,978 个测试点，同一阈值 | **91.00%**（1,800/1,978） |
 | Hybrid v10，扩展数据集最优已记录调参（trial 612） | 1,288 个测试点，三维实际位置欧氏误差 `< 0.04` | **80.67%**（1,039/1,288）；平均/中位/最大距离为 0.031020 / 0.018602 / 0.374633 |
 | Hybrid v10，最新部署快照（2026-07-23） | `模型10.json` 的 76 个测试点，同一 0.04 阈值 | **88.16%**（67/76）；平均距离 0.023261 |
 | GRU-Attention 实验 `exp1_gru_highfreq_300` | 17 个 JSON，1,279 个测试点，三维位置距离 `< 0.04` | **81.16%**（1,038/1,279）；X/Y/Z 单轴分别为 92.10% / 90.15% / 95.47% |
@@ -19,6 +22,8 @@
 | 2023 LSTM #95 | 温度→一维热伸长预测 | 训练 RMSE 0.126，测试 RMSE 0.127 |
 
 Hybrid v10 模型说明见 [models/hybrid_v10/MODEL_CARD.md](models/hybrid_v10/MODEL_CARD.md)。最新部署快照的逐点预测、失败样本诊断和三轴图像位于 [results/hybrid_v10/model10_2026-07-23](results/hybrid_v10/model10_2026-07-23)。
+
+24 件研究配置的架构、完整训练参数、已训练模型、逐点结果和复现命令见 [设计几何 11 项版本](experiments/fixed24_20261027/geometry11/README.md)。固定融合数据、NC 程序、设计点、STL 和 SHA256 清单位于同一[实验项目](experiments/fixed24_20261027/README.md)，由两个版本共用。91.81% 是在反复查看的固定测试集上选出的探索性结果，尚未通过新工件盲测。
 
 81.16% 实验的架构、训练/评估命令、模型文件与逐点结果见 [results/exp1_gru_highfreq_300/README.md](results/exp1_gru_highfreq_300/README.md)。`lstm_keras/main.py` 和 [lstm_keras/exp1_gru_highfreq_300.py](lstm_keras/exp1_gru_highfreq_300.py) 对应已从头重训并验证的 Exp1 源码；后续架构实验不属于这组结果。
 
@@ -28,7 +33,7 @@ Hybrid v10 模型说明见 [models/hybrid_v10/MODEL_CARD.md](models/hybrid_v10/M
 
 ```text
 data/
-  hybrid_json/                         # 当前主线训练/预测所需的 17 个 JSON 数据文件（共 9,908 点）
+  hybrid_json/                         # 原 Hybrid v10 训练/预测所需的 17 个 JSON 数据文件（共 9,908 点）
   thermal expansion error original.csv # 2023 LSTM 原始温度数据（4,683 行 × 17 列）
 lstm_keras/
   main.py                              # Hybrid v10 训练和评估入口
@@ -40,6 +45,7 @@ models/hybrid_v10/
   best_full_dataset/                   # trial 612 模型与匹配的预处理工件
   deployment_snapshot/                 # 2026-07-23 部署快照模型与工件
 results/hybrid_v10/                    # 已归档的当前结果与诊断
+experiments/fixed24_20261027/         # 24 件固定数据、原 91.00% 基线及几何 11 项版本
 lstm_matlab/                           # MATLAB LSTM 基线
 lr_minitab/                            # Minitab 线性回归对照
 Report.pdf                             # 2023 项目报告

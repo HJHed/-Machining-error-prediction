@@ -1,0 +1,232 @@
+{
+  "geometry_columns": [
+    "physical_cmm_x_fraction",
+    "physical_cmm_y_fraction",
+    "physical_cmm_z_fraction",
+    "physical_cmm_radial_fraction",
+    "physical_cmm_tip_distance_fraction",
+    "physical_cad_gap_log_mm",
+    "physical_cad_surface_valid",
+    "physical_cad_normal_x",
+    "physical_cad_normal_y",
+    "physical_cad_normal_z",
+    "physical_cad_normal_variation"
+  ],
+  "motion_columns": [
+    "physical_nc_future5_max_turn",
+    "physical_nc_future5_plunge_log",
+    "physical_nc_future5_max_segment_log",
+    "physical_nc_future5_feed_change",
+    "physical_nc_future5_rotary_change_log",
+    "physical_nc_future5_rapid",
+    "physical_nc_future15_max_turn",
+    "physical_nc_future15_plunge_log",
+    "physical_nc_future15_max_segment_log",
+    "physical_nc_future15_feed_change",
+    "physical_nc_future15_rotary_change_log",
+    "physical_nc_future15_rapid",
+    "physical_nc_previous5_max_turn",
+    "physical_nc_previous5_plunge_log",
+    "physical_nc_previous5_max_segment_log",
+    "physical_nc_future5_command_count_log",
+    "physical_acc_normal_log",
+    "physical_acc_tangent_log",
+    "physical_nc_tangent_normal_abs"
+  ],
+  "source_audit": {
+    "0029.json": {
+      "points": 817,
+      "surface_valid": 817,
+      "surface_gap_median_mm": 0.0009147216514553452,
+      "surface_gap_p95_mm": 0.003713096312264387,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\0029.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\0029.stl"
+    },
+    "0090.json": {
+      "points": 705,
+      "surface_valid": 705,
+      "surface_gap_median_mm": 0.0010676343972197333,
+      "surface_gap_p95_mm": 0.004280450351223781,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\0090.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\0090.stl"
+    },
+    "1409.json": {
+      "points": 705,
+      "surface_valid": 705,
+      "surface_gap_median_mm": 0.0009138866338013649,
+      "surface_gap_p95_mm": 0.003918809864525457,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1409.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1409.stl"
+    },
+    "1477.json": {
+      "points": 670,
+      "surface_valid": 670,
+      "surface_gap_median_mm": 0.0010578485456080964,
+      "surface_gap_p95_mm": 0.003995569777532963,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1477.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1477.stl"
+    },
+    "1540.json": {
+      "points": 720,
+      "surface_valid": 720,
+      "surface_gap_median_mm": 0.0008866995846753606,
+      "surface_gap_p95_mm": 0.003566361823212117,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1540.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1540.stl"
+    },
+    "1673.json": {
+      "points": 742,
+      "surface_valid": 742,
+      "surface_gap_median_mm": 0.0009247655320453715,
+      "surface_gap_p95_mm": 0.003988319086774871,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1673.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1673.stl"
+    },
+    "1754.json": {
+      "points": 685,
+      "surface_valid": 685,
+      "surface_gap_median_mm": 0.000999196715481981,
+      "surface_gap_p95_mm": 0.003963055735994297,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1754.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1754.stl"
+    },
+    "1820.json": {
+      "points": 831,
+      "surface_valid": 831,
+      "surface_gap_median_mm": 0.0009330696791632437,
+      "surface_gap_p95_mm": 0.0037373079312096086,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1820.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1820.stl"
+    },
+    "模型1.json": {
+      "points": 483,
+      "surface_valid": 482,
+      "surface_gap_median_mm": 0.00332837884085941,
+      "surface_gap_p95_mm": 0.3202415992383773,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\0098.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\0098.stl"
+    },
+    "模型2.json": {
+      "points": 437,
+      "surface_valid": 436,
+      "surface_gap_median_mm": 0.0027760082929645397,
+      "surface_gap_p95_mm": 0.3240997424123484,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\0100.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\0100.stl"
+    },
+    "模型3.json": {
+      "points": 380,
+      "surface_valid": 380,
+      "surface_gap_median_mm": 0.0009744921679115425,
+      "surface_gap_p95_mm": 0.0042233610123582266,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\0125.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\0125.stl"
+    },
+    "模型4.json": {
+      "points": 410,
+      "surface_valid": 410,
+      "surface_gap_median_mm": 0.0011139746266447701,
+      "surface_gap_p95_mm": 0.004863009724103673,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1630.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1630.stl"
+    },
+    "模型5.json": {
+      "points": 723,
+      "surface_valid": 720,
+      "surface_gap_median_mm": 0.0033543968156676232,
+      "surface_gap_p95_mm": 0.2320602325522021,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1789.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1789.stl"
+    },
+    "模型6.json": {
+      "points": 587,
+      "surface_valid": 583,
+      "surface_gap_median_mm": 0.003,
+      "surface_gap_p95_mm": 0.17577044972955874,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1738.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1738.stl"
+    },
+    "模型7.json": {
+      "points": 706,
+      "surface_valid": 706,
+      "surface_gap_median_mm": 0.0010565553831960082,
+      "surface_gap_p95_mm": 0.003958219174015836,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1951.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1951.stl"
+    },
+    "模型8.json": {
+      "points": 400,
+      "surface_valid": 400,
+      "surface_gap_median_mm": 0.0009862671137169914,
+      "surface_gap_p95_mm": 0.004918564120587615,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\2000.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\2000.stl"
+    },
+    "模型9.json": {
+      "points": 560,
+      "surface_valid": 559,
+      "surface_gap_median_mm": 0.003,
+      "surface_gap_p95_mm": 0.158688121072552,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1402.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1402.stl"
+    },
+    "模型10.json": {
+      "points": 590,
+      "surface_valid": 589,
+      "surface_gap_median_mm": 0.0031907588705917646,
+      "surface_gap_p95_mm": 0.43379753419852773,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1790.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1790.stl"
+    },
+    "模型11.json": {
+      "points": 641,
+      "surface_valid": 638,
+      "surface_gap_median_mm": 0.0037726746679763237,
+      "surface_gap_p95_mm": 0.3498382413235606,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1753.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1753.stl"
+    },
+    "模型12.json": {
+      "points": 729,
+      "surface_valid": 726,
+      "surface_gap_median_mm": 0.002802675848686113,
+      "surface_gap_p95_mm": 0.1032420110679887,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1765.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1765.stl"
+    },
+    "模型13.json": {
+      "points": 623,
+      "surface_valid": 620,
+      "surface_gap_median_mm": 0.0028356772677644777,
+      "surface_gap_p95_mm": 0.23966164998497194,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1787.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1787.stl"
+    },
+    "模型14.json": {
+      "points": 665,
+      "surface_valid": 662,
+      "surface_gap_median_mm": 0.00318732187049353,
+      "surface_gap_p95_mm": 0.18894131675560755,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1821.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1821.stl"
+    },
+    "模型15.json": {
+      "points": 662,
+      "surface_valid": 659,
+      "surface_gap_median_mm": 0.002967588989584642,
+      "surface_gap_p95_mm": 0.12894999999999993,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\1889.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\1889.stl"
+    },
+    "模型17.json": {
+      "points": 505,
+      "surface_valid": 505,
+      "surface_gap_median_mm": 0.0024959183147127764,
+      "surface_gap_p95_mm": 0.004363927768683367,
+      "nominal_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\nominal\\0002.txt",
+      "stl_file": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\data\\stl\\0002.stl"
+    }
+  },
+  "nc_programs": 24,
+  "manifest": "E:\\USB5000_Python\\Machining-error-prediction-repro-20261014\\experiments\\fixed24_20261027\\runtime\\cmm_stl_manifest.json"
+}

@@ -1,0 +1,39 @@
+{
+  "env": {
+    "TEE_EPOCHS": "300",
+    "TEE_PATIENCE": "60",
+    "TEE_BATCH_SIZE": "128",
+    "TEE_TIME_STEPS": "10",
+    "TEE_SPLIT_MODE": "phase_blocks",
+    "TEE_RANDOM_SEED": "2031",
+    "TEE_TEMPORAL_BACKBONE": "gru_attention",
+    "TEE_SEQUENCE_GROUP_COLS": "source_file_name,mapped_file_index",
+    "TEE_USE_VIB_FEATURES": "true",
+    "TEE_SEQ_DENSE_UNITS": "24",
+    "TEE_FUSED_DENSE_UNITS": "160,80",
+    "TEE_Z_EXTREME_WEIGHT": "1.0",
+    "TEE_SEQ_DROPOUT_RATE": "0.35",
+    "TEE_REDUCE_LR_PATIENCE": "12",
+    "TEE_CONSOLE_OUTPUT": "full",
+    "TEE_RISK_TEACHER_EPOCHS": "100",
+    "TEE_RISK_ALPHA": "1.5",
+    "TEE_RISK_BETA": "0.5",
+    "TEE_USE_MOE_OUTPUT_HEAD": "false",
+    "TEE_USE_RESIDUAL_CORRECTION": "false",
+    "TEE_USE_NEAR_THRESHOLD_REWEIGHTING": "false",
+    "MPLBACKEND": "Agg",
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONIOENCODING": "utf-8",
+    "TF_NUM_INTRAOP_THREADS": "4",
+    "TF_NUM_INTEROP_THREADS": "2",
+    "OMP_NUM_THREADS": "4"
+  },
+  "extra_env": {
+    "TEE_USE_REGION_NC_BRANCH": "false",
+    "TEE_USE_PHYSICAL_POINT_FEATURES": "true",
+    "TEE_PHYSICAL_FEATURE_SET": "geometry",
+    "TEE_EXCLUDE_SOURCE_NUMBERS": "",
+    "TEE_EXPORT_PHYSICAL_SCREEN": "false"
+  },
+  "test_threshold_mm": 0.04
+}

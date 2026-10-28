@@ -1,0 +1,29 @@
+{
+  "version": "geometry11_24_20261028",
+  "dataset_root": "../data",
+  "dataset_manifest": "../source_manifest.json",
+  "workpiece_count": 24,
+  "test_threshold_mm": 0.04,
+  "parent_sha256": {
+    "source_manifest.json": "1a89759ba85c58a8a4c2805e5867cbb15d7c3296af9aa2ba618836199662918d",
+    "baseline/test_point_identities.csv": "6d493615e03a8e01fa30b7f2bad042cd0078974e993e697f0868ded063d15e92",
+    "baseline/train_point_identities.csv": "2f88f3bc1ba298af4120c0b9615fdcc8888568709b41ea80b63fce5822789422",
+    "baseline/val_point_identities.csv": "474557810d45e4167417daf1a7801ba98016ffab1c039580937e1039ba58f718",
+    "src/main.py": "6594a346aa73699be5593e390e47bd021f21d3fa1d0db1ce736e9e0c69e8781a",
+    "src/physical_point_features.py": "fe548089c997b5ade1b02e3f4b4579ea4133573db1286f6163f31a41ba05dc88",
+    "src/physical_risk.py": "b68770c32103a893045d2a5deb48ca0f52cab62770a3f55c725486de45e9f178"
+  },
+  "artifact_sha256": {
+    "training_parameters.json": "00645e4253a6358c129dca3f466494b91ef15b5249da9509df0d767d0f6fc9f3",
+    "physical_geometry_nc_model.keras": "fd9c1c796665385ddb807316750ba398d92068006c47cb3644b558fd03e91c12",
+    "physical_geometry_nc_preprocessing.pkl": "ec2396aeead0cedde7b9b25a5be87bd703d772d0690b03910cb8074f1178f67a",
+    "training_history.csv": "455c7cb6ddf344d25c54325444b053f121261ce555127f59eee5109af96b7950",
+    "test_weighted_predictions.csv": "5c528ee56579e4b1253e71a9bba92113158bf336eedc11d1f2c58df55838655e",
+    "val_weighted_predictions.csv": "c701f5e44f33275246ce7f1654e3d468eae8f9fd16722a82065ab686c08e28b1",
+    "comparison_summary.json": "b8d0b2f365cb602e37c2f51b347e47ce0901ab3ba5ea02af17bc0dd0d0fd6a12",
+    "per_workpiece_comparison.csv": "091a39eacf396c82bede77e7a7370cc2f353b2443ad004d336ba0dd8ba99d384",
+    "reload_verification.json": "1750a7dfd522e3649e0724e832c13bbddb7714315b02ffa0eecfc04ff3a6ef4d",
+    "per_workpiece_comparison.png": "7971d902b411874eb02fd0f3b4d59081de2be6ed01fea17c3c1690e601771cab",
+    "risk_equivalence.json": "b9054805806a552760873bbe0718d474ac66711a07947dd1615988023df0e820"
+  }
+}

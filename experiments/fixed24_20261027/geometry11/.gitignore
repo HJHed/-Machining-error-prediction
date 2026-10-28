@@ -1,0 +1,4 @@
+verify/
+retrain/
+__pycache__/
+*.pyc

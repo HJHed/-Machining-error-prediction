@@ -1,0 +1,7 @@
+{
+  "test_points": 1978,
+  "max_risk_score_difference": 0.0,
+  "max_point_weight_difference": 0.0,
+  "high_risk_flag_mismatches": 0,
+  "baseline_weights_reproduction": "train_baseline.py --mode verify"
+}

@@ -1,0 +1,7 @@
+{
+  "test_points": 1978,
+  "correct": 1816,
+  "accuracy_pct": 91.80990899898887,
+  "max_prediction_difference_mm": 0.0,
+  "max_label_difference_mm": 0.0
+}
